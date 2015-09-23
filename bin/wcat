@@ -21,7 +21,7 @@ if len(extra) == 0:
 auth = None
 if options.username:
   auth = (options.username, options.password)
-wcat = Wcat.Wcat(auth)
+wcat = Wcat(auth)
 
 for url in extra:
   # Fun fact: if you don't wrap the print in a try/catch with a stdout.flush() you run into all kinds of broken

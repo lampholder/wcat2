@@ -51,10 +51,10 @@ class Wcat:
           page = requests.post(page.url, data=data)
         except requests.ConnectionError, e:
           raise Exception('Failed on logging into CAS: %s' % e.message)
-      elif page.status_code == 200 and page.url.startswith('http://wiki.openmarket.com/login'):
+      elif page.status_code == 200 and page.url.startswith('https://wiki.openmarket.com/login'):
         (username, password) = self._get_auth(prompt='OM Wiki login required')
         data = {'os_username': username, 'os_password': password, 'os_destination': urllib.unquote_plus(page.url.split('os_destination=')[1].split('&')[0])}
-        login_url = 'http://wiki.openmarket.com/dologin.action'
+        login_url = 'https://wiki.openmarket.com/dologin.action'
         try:
           page = requests.post(login_url, data=data)
         except requests.ConnectionError, e:
